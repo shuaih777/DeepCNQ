@@ -1,0 +1,86 @@
+python: can't open file '/work/users/s/h/shuaishu/Intern/Servier/DeepQuantreg/To_Pytorch/DeepQuantreg/project/run_exp.ekan.nonCrossgaps_gpu.py': [Errno 2] No such file or directory
+Parsed Arguments:
+dataset: multi_diseases
+nhead: 4
+dropout: 0.2
+n_quantiles: 5
+batch_size: 64
+n_epoch: 2
+grid_size: 5
+lr: 0.005
+weight_decay: 0.0
+device: gpu
+seed: 41
+verbose: 1
+loss_fn: nohuber
+expname: nohuber_TransformerPS_gaps_metabric_tune
+d: 100
+dataset_str: metabric
+model_type: TransformerPS_gaps
+quantiles: [0.1, 0.25, 0.5, 0.75, 0.9]
+n: 1500
+theta: 180.0
+layers: 2
+jpg_name: run_exp_nonCross_multi_diseases_metabric_samplesize1500_seed41_TransformerPS_gaps_dim_feedforward100_nQ5_lr0.005_dropout0.2_gridsize5_epochs2_batch64_penalty5_weightdecay0_layers2_lossfnnohuber_head4
+result_path: /work/users/s/h/shuaishu/Intern/Servier/DeepQuantreg/To_Pytorch/DeepQuantreg/project/test_multi_diseases/Tune_results_nohuber_GpasNonCross_metabric_TransformerPS_gaps_5q_tune
+acfn: relu
+penalty: 5
+torch.cuda.is_available(): False
+Using device: cpu
+num_diseases: 3
+Transformer output dim: 5
+TransformerLayer 100 4 2 0.2 relu
+DeepQuantReg(
+  (layer_norm): LayerNorm((100,), eps=1e-05, elementwise_affine=True)
+  (sigmoid): Sigmoid()
+  (relu): ReLU()
+  (model_base): TransformerPS(
+    (input_embed): Linear(in_features=1, out_features=100, bias=True)
+    (position_encodeT): PositionalEncoding(
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+    (norm): LayerNorm((100,), eps=1e-05, elementwise_affine=True)
+    (transformer_encoder): TransformerEncoder(
+      (layers): ModuleList(
+        (0-1): 2 x TransformerEncoderLayer(
+          (self_attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=100, out_features=100, bias=True)
+          )
+          (linear1): Linear(in_features=100, out_features=200, bias=True)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (linear2): Linear(in_features=200, out_features=100, bias=True)
+          (norm1): LayerNorm((100,), eps=1e-05, elementwise_affine=True)
+          (norm2): LayerNorm((100,), eps=1e-05, elementwise_affine=True)
+          (dropout1): Dropout(p=0.2, inplace=False)
+          (dropout2): Dropout(p=0.2, inplace=False)
+        )
+      )
+    )
+    (output_linear): Linear(in_features=900, out_features=100, bias=True)
+  )
+  (output_layer): Linear(in_features=100, out_features=15, bias=True)
+)
+Epoch 0, Loss: 0.6095844931900501
+Epoch 0, Train; Loss: 0.4044138491153717, True MSE: 0, True MSE 50 quantile: 0, MMSE: 2.057255268096924, CI: 0.48380544234669587
+Epoch 0, Valid; Loss: 0.412674218416214, True MSE: 0, True MSE 50 quantile: 0, MMSE: 2.0928127765655518, CI: 0.5000093135885256
+Epoch 1, Loss: 0.31115024015307424
+Epoch 1, Train; Loss: 0.31467682123184204, True MSE: 0, True MSE 50 quantile: 0, MMSE: 3.0073719024658203, CI: 0.49145270357286497
+Epoch 1, Valid; Loss: 0.31846240162849426, True MSE: 0, True MSE 50 quantile: 0, MMSE: 3.155742645263672, CI: 0.5194664348617968
+/nas/longleaf/home/shuaishu/.local/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+Observed CI censored for all quantile: test nan
+Observed CI IPCW for all quantile: test nan
+Observed CI censored for all quantile: valid nan
+Observed CI IPCW for all quantile: valid nan
+Observed average MMSE for all quantile: train 4.109589 valid 4.306668 test 4.487015
+Observed average CI for all quantile: train 0.49564234497871096 valid 0.5018068361739778 test 0.5182929937929365
+Observed average QL for all quantile: train 0.40015277 valid 0.40798005 test 0.41567636
+Observed MMSE for each quantile: train Q0.1: 0.9366 | Q0.25: 1.1563 | Q0.5: 3.3977 | Q0.75: 5.8909 | Q0.9: 9.1664
+Observed CI for each quantile: train Q0.1: 0.4972 | Q0.25: 0.4991 | Q0.5: 0.4977 | Q0.75: 0.5001 | Q0.9: 0.4841
+Observed QL for each quantile: train Q0.1: 0.3560 | Q0.25: 0.4011 | Q0.5: 0.5636 | Q0.75: 0.4414 | Q0.9: 0.2387
+Observed MMSE for each quantile: test Q0.1: 1.1515 | Q0.25: 1.4020 | Q0.5: 3.7811 | Q0.75: 6.3678 | Q0.9: 9.7326
+Observed CI for each quantile: test Q0.1: 0.5194 | Q0.25: 0.5214 | Q0.5: 0.5189 | Q0.75: 0.5221 | Q0.9: 0.5096
+Observed QL for each quantile: test Q0.1: 0.3901 | Q0.25: 0.4166 | Q0.5: 0.5963 | Q0.75: 0.4430 | Q0.9: 0.2324
+Observed MMSE for each quantile: valid Q0.1: 1.0484 | Q0.25: 1.2842 | Q0.5: 3.5979 | Q0.75: 6.1402 | Q0.9: 9.4625
+Observed CI for each quantile: valid Q0.1: 0.5041 | Q0.25: 0.5050 | Q0.5: 0.5030 | Q0.75: 0.5049 | Q0.9: 0.4919
+Observed QL for each quantile: valid Q0.1: 0.3647 | Q0.25: 0.4079 | Q0.5: 0.5749 | Q0.75: 0.4503 | Q0.9: 0.2422
